@@ -16,7 +16,6 @@ This project is the backend for the VisitEthiopia website, which provides compre
   - [Destinations](#destinations)
   - [Accommodations](#accommodations)
 - [Middleware](#middleware)
-- [Testing](#testing)
   - [Postman Test Collections](#postman-test-collections)
     - [User Registration Example](#user-registration-example)
     - [User Login Example](#user-login-example)
@@ -24,7 +23,7 @@ This project is the backend for the VisitEthiopia website, which provides compre
     - [Create Accommodation Example](#create-accommodation-example)
 - [Dependencies](#dependencies)
 
-## Installation
+# Installation
 
 1. Clone the repository:
    ```bash
@@ -32,33 +31,36 @@ This project is the backend for the VisitEthiopia website, which provides compre
    cd ve_server_side
    Install dependencies:
    bash
-   Copy code
    npm install
    ```
 
-Running the Server
-To start the server, run:
-
 API Endpoints
-User Registration
+
+# User Registration
+
 Endpoint: /api/users
 Method: POST
 Request Body:
 json
+
 Copy code
 {
 "name": "John Doe",
 "email": "johndoe@example.com",
 "password": "password123"
 }
+
 Response:
 Success: 201 Created with a token in the response body.
 Error: 400 Bad Request if validation fails or user already exists.
-User Login
+
+# User Login
+
 Endpoint: /api/auth
 Method: POST
 Request Body:
 json
+
 Copy code
 {
 "email": "johndoe@example.com",
@@ -72,17 +74,19 @@ To access protected routes, include the x-auth-token header with a valid JWT tok
 
 Example:
 
-Endpoint: /api/protected-route
+Endpoint: /api/auth
 Method: GET
 Headers:
-x-auth-token: your.jwt.token.here
-Destinations
-Create Destination
+x-auth-token: 'token'
+
+# Destinations
+
+# Create Destination
 
 Endpoint: /api/destinations
 Method: POST
-Request Body:
-json
+Request Body:json
+
 Copy code
 {
 "name": "Lalibela",
@@ -95,70 +99,32 @@ Copy code
 "longitude": 39.0473
 }
 }
-Get All Destinations
+
+# Get All Destinations
 
 Endpoint: /api/destinations
 Method: GET
-Get Destination by ID
+
+# Get Destination by ID
 
 Endpoint: /api/destinations/:id
 Method: GET
-Update Destination
+
+# Update Destination
 
 Endpoint: /api/destinations/:id
 Method: PUT
 Request Body: (same as create)
-Delete Destination
+
+# Delete Destination
 
 Endpoint: /api/destinations/:id
 Method: DELETE
 Accommodations
 Create Accommodation
 
-Endpoint: /api/accommodations
-Method: POST
-Request Body:
-json
-Copy code
-{
-"name": "Hilton Hotel",
-"description": "Luxury hotel",
-"imageUrl": "http://example.com/image.jpg",
-"address": "123 Main St",
-"priceRange": "$$$",
-"amenities": ["Pool", "Gym", "Spa"],
-"contact": {
-"phone": "123-456-7890",
-"email": "contact@hilton.com",
-"website": "http://hilton.com"
-}
-}
-Get All Accommodations
+# Middleware to verify JWT token
 
-Endpoint: /api/accommodations
-Method: GET
-Get Accommodation by ID
-
-Endpoint: /api/accommodations/:id
-Method: GET
-Update Accommodation
-
-Endpoint: /api/accommodations/:id
-Method: PUT
-Request Body: (same as create)
-Delete Accommodation
-
-Endpoint: /api/accommodations/:id
-Method: DELETE
-Middleware
-Authentication Middleware
-The authentication middleware verifies the JWT token included in the request header to protect routes.
-
-javascript
-Copy code
-import jwt from 'jsonwebtoken';
-
-// Middleware to verify JWT token
 export default (req, res, next) => {
 const token = req.header('x-auth-token');
 
@@ -176,76 +142,11 @@ const token = req.header('x-auth-token');
     }
 
 }
-Testing
-To test the API endpoints, you can use Postman or any other API testing tool. Here are the general steps:
 
-Register a User: Send a POST request to /api/users with the required fields.
-Login a User: Send a POST request to /api/auth with the email and password.
-Access Protected Routes: Include the x-auth-token header with the token received during login or registration to access protected routes.
-CRUD Operations: Use the provided endpoints for creating, reading, updating, and deleting destinations and accommodations.
-Postman Test Collections
-Here are some sample JSON data for testing:
+# Dependencies
 
-User Registration Example
-Endpoint: POST /api/users
-Body:
-json
-Copy code
-{
-"name": "John Doe",
-"email": "john.doe@example.com",
-"password": "password123"
-}
-User Login Example
-Endpoint: POST /api/auth
-Body:
-json
-Copy code
-{
-"email": "john.doe@example.com",
-"password": "password123"
-}
-Create Destination Example
-Endpoint: POST /api/destinations
-Headers: x-auth-token: your.jwt.token.here
-Body:
-json
-Copy code
-{
-"name": "Lalibela",
-"description": "Ancient rock-hewn churches",
-"imageUrl": "http://example.com/image.jpg",
-"highlights": ["Churches", "History"],
-"thingsToDo": ["Explore churches", "Learn history"],
-"location": {
-"latitude": 12.0306,
-"longitude": 39.0473
-}
-}
-Create Accommodation Example
-Endpoint: POST /api/accommodations
-Headers: x-auth-token: your.jwt.token.here
-Body:
-json
-Copy code
-{
-"name": "Hilton Hotel",
-"description": "Luxury hotel",
-"imageUrl": "http://example.com/image.jpg",
-"address": "123 Main St",
-"priceRange": "$$$",
-"amenities": ["Pool", "Gym", "Spa"],
-"contact": {
-"phone": "123-456-7890",
-"email": "contact@hilton.com",
-"website": "http://hilton.com"
-}
-}
-Dependencies
 The following dependencies are used in this project:
 
-json
-Copy code
 "dependencies": {
 "bcryptjs": "^2.4.3",
 "cors": "^2.8.5",
