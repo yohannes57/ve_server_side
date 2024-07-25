@@ -1,11 +1,12 @@
-import { check, ExpressValidator, validationResult } from "express-validator";
+import { check, validationResult } from "express-validator";
 import jwt from "jsonwebtoken";
 import authMiddleware from "../../middleware/authMiddleware.mjs";
 import User from "../../models/users.mjs";
 import bcrypt from "bcryptjs";
 import express from "express";
+//-------------------
 const router = express.Router();
-//---------------
+//---------------get authenticated user
 router.get("/", authMiddleware, async (req, res) => {
   try {
     //get user from data base except database (use select('_password'))
@@ -14,7 +15,7 @@ router.get("/", authMiddleware, async (req, res) => {
     //send user
     res.json(user);
   } catch (err) {
-    console.error(err);
+    console.error(err.message);
     res.status(500).json({ errors: [{ msg: "bad request" }] });
   }
 });
@@ -22,19 +23,15 @@ router.get("/", authMiddleware, async (req, res) => {
 router.post(
   "/",
   [
-    //check inputs: validation arrya,parameter,error,validation function
     check("email", "Please use valid email"),
     check("password", "password Required").not().isEmpty(),
   ],
   async (req, res) => {
-    //check if any invalid inputs
     const errors = validationResult(req);
-
     //if erros send them to as a 400 error cause it client side
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
     //distructuring the inputs
     const { email, password } = req.body;
 
@@ -47,7 +44,7 @@ router.post(
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        res.status(400).json({ erros: [{ msg: "Incorrect password" }] });
+        res.status(400).json({ erros: [{ msg: "Inooooocorrect password" }] });
       }
 
       //create payload with jwt

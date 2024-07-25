@@ -7,13 +7,14 @@ import basicInfoRoutes from "./routes/basicInfoRoutes.mjs";
 import accomodationRoutes from "./routes/accomodationRoutes.mjs";
 import usersRoutes from "./routes/api/users.mjs";
 import authRoutes from "./routes/api/auth.mjs";
+import cors from "cors";
 // -----------------
 const app = express();
 dotenv.config();
 //db connection
 connectDB();
 //midleware
-// app.use(cors());
+app.use(cors());
 app.use(express.json({ extended: false }));
 
 //-----------------defined routes
