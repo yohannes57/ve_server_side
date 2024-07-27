@@ -16,8 +16,8 @@ const destinationSchema = new mongoose.Schema({
   highLights: [],
   thingsToDo: [],
   location: {
-    latitude: { type: Number, required: true },
-    longitude: { type: Number, required: true },
+    latitude: { type: Number },
+    longitude: { type: Number },
   },
 });
 

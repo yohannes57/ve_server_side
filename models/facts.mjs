@@ -7,11 +7,9 @@ const factsSchema = new mongoose.Schema({
   },
   content: {
     type: String,
-    required: true,
   },
   catagory: {
     type: String,
-    require: true,
   },
   imageUrl: {
     type: String,

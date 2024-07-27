@@ -11,7 +11,6 @@ router.get("/", authMiddleware, async (req, res) => {
   try {
     //get user from data base except database (use select('_password'))
     const user = await User.findById(req.user.id).select("-password");
-
     //send user
     res.json(user);
   } catch (err) {
@@ -34,7 +33,6 @@ router.post(
     }
     //distructuring the inputs
     const { email, password } = req.body;
-
     try {
       let user = await User.findOne({ email });
       if (!user) {
