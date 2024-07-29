@@ -16,6 +16,7 @@ connectDB();
 //midleware
 app.use(cors());
 app.use(express.json({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 //-----------------defined routes
 app.use("/api", destRoutes);

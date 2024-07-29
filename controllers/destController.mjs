@@ -45,6 +45,32 @@ export const getDestinationById = async (req, res) => {
     errors(res, error);
   }
 };
+//get by name
+export const getDestinationByName = async (req, res) => {
+  let destinationName = req.params.destinationName;
+  try {
+    //to avoid the case sensetivity with reqular expression
+    let destination = await Destination.findOne({
+      name: { $regex: new RegExp(`^${destinationName}$`, "i") },
+    });
+    if (!destination)
+      res.status(404).json({ message: "Destination not found" });
+    res.status(200).json({ destination });
+  } catch (error) {
+    res.status(404).send("sth wrong or Destination not found");
+  }
+};
+// app.get("/api/destinations/:destinationName", (req, res) => {
+//   const { destinationName } = req.params;
+//   const destination = destinations.find(
+//     (dest) => dest.name.toLowerCase() === destinationName.toLowerCase()
+//   );
+//   if (destination) {
+//     res.json(destination);
+//   } else {
+//     res.status(404).send("Destination not found");
+//   }
+// });
 
 //getDestination and update the content
 export const updateDestinationCollection = async (req, res) => {

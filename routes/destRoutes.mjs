@@ -4,6 +4,7 @@ import {
   createDestination,
   getAllDestinations,
   getDestinationById,
+  getDestinationByName,
   removeDestination,
   updateDestinationCollection,
 } from "../controllers/destController.mjs";
@@ -15,6 +16,7 @@ const router = express.Router();
 router.post("/destination", createDestination);
 router.get("/destination", getAllDestinations);
 router.get("/destination/:id", getDestinationById);
+router.get("/destinations/:destinationName", getDestinationByName);
 router.put("/destination/:id", updateDestinationCollection);
 router.delete("/destination/:id", removeDestination);
 
