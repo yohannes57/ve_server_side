@@ -53,9 +53,10 @@ export const getDestinationByName = async (req, res) => {
     let destination = await Destination.findOne({
       name: { $regex: new RegExp(`^${destinationName}$`, "i") },
     });
-    if (!destination)
-      res.status(404).json({ message: "Destination not found" });
-    res.status(200).json({ destination });
+    if (!destination) {
+      return res.status(404).json({ message: "Destination not found" });
+    }
+    return res.status(200).json({ destination });
   } catch (error) {
     res.status(404).send("sth wrong or Destination not found");
   }
