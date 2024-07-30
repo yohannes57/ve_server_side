@@ -35,35 +35,35 @@ The VisitEthiopia website backend handles user authentication, destination data 
 ## File Structure
 
 - visitE-server/
-- ├── conn/
-- │ ├── db.mjs
+-  conn/
+- │  db.mjs
 
-## ├── controllers/
+##  controllers/
 
-- │ ├── accomodationController.mjs
-- │ ├── basicInfoController.mjs
-- │ ├── destController.mjs
-- │ ├── factController.mjs
-  ├── middleware/
-- │ ├── authMiddleware.mjs
+- │  accomodationController.mjs
+- │  basicInfoController.mjs
+- │  destController.mjs
+- │  factController.mjs
+   middleware/
+- │  authMiddleware.mjs
 
-## ├── models/
+##  models/
 
-- │ ├── accomodations.mjs
-- │ ├── basicInfo.mjs
-- │ ├── destination.mjs
-- │ ├── facts.mjs
-- │ ├── users.mjs
+- │  accomodations.mjs
+- │  basicInfo.mjs
+- │  destination.mjs
+- │  facts.mjs
+- │  users.mjs
 
-## ├── routes/
+##  routes/
 
-- │ ├── api/
-- │ ├── accomodationRoutes.mjs
-- │ ├── basicInfoRoutes.mjs
-- │ ├── destRoutes.mjs
-- │ ├── factRoutes.mjs
-- ├── .env
-- ├── server.js
+- │  api/
+- │  accomodationRoutes.mjs
+- │  basicInfoRoutes.mjs
+- │  destRoutes.mjs
+- │  factRoutes.mjs
+-  .env
+-  server.js
 - └── package.json
 
 ## Setup
