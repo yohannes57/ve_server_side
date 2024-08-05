@@ -8,6 +8,7 @@ import accomodationRoutes from "./routes/accomodationRoutes.mjs";
 import usersRoutes from "./routes/api/users.mjs";
 import authRoutes from "./routes/api/auth.mjs";
 import cors from "cors";
+import aboutRoutes from "./routes/aboutEthiopiaRoutes.mjs";
 // -----------------
 const app = express();
 dotenv.config();
@@ -23,6 +24,7 @@ app.use("/api", destRoutes);
 app.use("/api", factRoutes);
 app.use("/api", basicInfoRoutes);
 app.use("/api", accomodationRoutes);
+app.use("/api", aboutRoutes);
 // user registration and login authentication routes
 app.use("/api/users", usersRoutes);
 app.use("/api/auth", authRoutes);
