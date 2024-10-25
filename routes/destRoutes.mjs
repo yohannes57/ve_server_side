@@ -11,7 +11,6 @@ import {
 
 //create router object
 const router = express.Router();
-
 //create routes
 router.post("/destination", createDestination);
 router.get("/destination", getAllDestinations);

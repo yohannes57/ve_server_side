@@ -12,7 +12,7 @@ export const createAboutEthiopia = async (req, res) => {
       government,
     });
     res.status(201).json({ message: about });
-    console.log(about);
+    // console.log(about);/
   } catch (err) {
     console.error(err);
   }
